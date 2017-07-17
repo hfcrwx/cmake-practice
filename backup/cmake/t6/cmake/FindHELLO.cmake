@@ -1,0 +1,16 @@
+find_path(HELLO_INCLUDE_DIR hello.h /usr/include/hello /usr/local/include/hello)
+find_library(HELLO_LIBRARY NAMES hello PATH /usr/lib /usr/local/lib)
+
+if(HELLO_INCLUDE_DIR AND HELLO_LIBRARY)
+	set(HELLO_FOUND TRUE)
+endif()
+
+if(HELLO_FOUND)
+	if(NOT HELLO_FIND_QUIETLY)
+		message(STATUS "Found Hello: ${HELLO_LIBRARY}")
+	endif()
+else()
+	if(HELLO_FIND_REQUIRED)
+		message(FATAL_ERROR "Could not find hello library")
+	endif()
+endif()
